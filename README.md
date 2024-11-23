@@ -25,8 +25,8 @@ Before running the application, make sure you have the following installed:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/flask-cat-app.git
-   cd flask-cat-app
+   git clone https://github.com/rackshase-rg/flaskapp.git
+   cd flaskapp
    ```
 
 2. Create and activate a virtual environment:
@@ -59,7 +59,7 @@ Before running the application, make sure you have the following installed:
 ## File Structure
 
 ```
-flask-cat-app/
+flaskapp/
 ├── app.py               # Main application script
 ├── requirements.txt     # Dependencies for the project
 ├── templates/
