@@ -49,7 +49,8 @@ Before running the application, make sure you have the following installed:
 1. Run the application:
 
    ```bash
-   python app.py
+   nohup python app.py > flask.log 2>&1 &
+
    ```
 
 2. Open your browser and go to [http://127.0.0.1:5000](http://127.0.0.1:5000).
