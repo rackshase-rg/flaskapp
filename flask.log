@@ -11,3 +11,24 @@ nohup: ввод игнорируется
  * Debugger PIN: 194-562-331
 127.0.0.1 - - [09/Dec/2024 20:36:13] "GET / HTTP/1.1" 200 -
 127.0.0.1 - - [09/Dec/2024 20:36:24] "GET / HTTP/1.1" 200 -
+ * Detected change in '/home/vitalina/projects/flaskapp/app.py', reloading
+ * Restarting with stat
+Traceback (most recent call last):
+  File "/home/vitalina/projects/flaskapp/app.py", line 14, in <module>
+    app.run(host="0.0.0.0", port=5000)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vitalina/projects/flaskapp/venv/lib/python3.12/site-packages/flask/app.py", line 889, in run
+  File "/home/vitalina/projects/flaskapp/venv/lib/python3.12/site-packages/werkzeug/serving.py", line 1115, in run_simple
+  File "/home/vitalina/projects/flaskapp/venv/lib/python3.12/site-packages/werkzeug/_reloader.py", line 469, in run_with_reloader
+  File "/home/vitalina/projects/flaskapp/venv/lib/python3.12/site-packages/werkzeug/_reloader.py", line 275, in restart_with_reloader
+  File "/usr/lib/python3.12/subprocess.py", line 389, in call
+    with Popen(*popenargs, **kwargs) as p:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.12/subprocess.py", line 1840, in _execute_child
+    self._posix_spawn(args, executable, env, restore_signals,
+  File "/usr/lib/python3.12/subprocess.py", line 1784, in _posix_spawn
+    self.pid = os.posix_spawn(executable, args, env, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/home/vitalina/projects/flaskapp/venv/bin/python'

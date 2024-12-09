@@ -32,6 +32,6 @@ jobs:
         echo "==== Stopping old process ===="
         pkill -f "python app.py" || true  # Остановка старого процесса
         echo "==== Starting new process ===="
-        nohup python app.py > flask.log 2>&1 &  # Запуск приложения в фоне
+        nohup python app.py >> /home/ubuntu/flask.log 2>&1 &  # Запуск приложения в фоне
         echo "==== Deployment complete! ===="
         EOF
