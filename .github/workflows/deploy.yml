@@ -1,0 +1,37 @@
+name: Deploy Flask App to AWS
+
+on:
+  push:
+    branches:
+      - master  # Ветка, при пуше в которую срабатывает деплой
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code  # Чекаут кода из репозитория
+      uses: actions/checkout@v3
+
+    - name: Setup SSH  # Настройка SSH для подключения к AWS
+      uses: webfactory/ssh-agent@v0.5.3
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: Deploy to AWS  # Обновление и перезапуск приложения на сервере
+      run: |
+        ssh -o StrictHostKeyChecking=no ${{ secrets.AWS_USER }}@${{ secrets.AWS_HOST }} << 'EOF'
+        set -e  # Останавливаем скрипт при ошибках
+        echo "==== Pulling latest changes from GitHub ===="
+        cd ${{ secrets.APP_DIR }}  # Переход в директорию приложения
+        git pull origin master  # Обновление кода
+        echo "==== Activating Virtual Environment ===="
+        source venv/bin/activate  # Активация виртуального окружения
+        echo "==== Installing Dependencies ===="
+        pip install -r requirements.txt  # Установка зависимостей
+        echo "==== Stopping old process ===="
+        pkill -f "python app.py" || true  # Остановка старого процесса
+        echo "==== Starting new process ===="
+        nohup python app.py > flask.log 2>&1 &  # Запуск приложения в фоне
+        echo "==== Deployment complete! ===="
+        EOF
