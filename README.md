@@ -1,5 +1,5 @@
 
-# Flask Cat GIF App
+# Flask Cat GIF App For Vitalinka
 
 This is a simple Flask web application that displays a random cat GIF. The application is written in Python 3.10 and uses the [Cataas](https://cataas.com/) service as a source for cat animations.
 
