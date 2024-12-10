@@ -24,7 +24,8 @@ jobs:
         set -e  # Останавливаем скрипт при ошибках
         echo "==== Pulling latest changes from GitHub ===="
         cd ${{ secrets.APP_DIR }}  # Переход в директорию приложения
-        git pull origin master  # Обновление кода
+        git fetch origin
+        git reset --hard origin/master
         echo "==== Activating Virtual Environment ===="
         source venv/bin/activate  # Активация виртуального окружения
         echo "==== Installing Dependencies ===="
