@@ -3,27 +3,7 @@ name: Deploy Flask App to AWS
 on:
   push:
     branches:
-      - master  # Ветка, при пуше в которую срабатывает деплой
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout code  # Чекаут кода из репозитория
-      uses: actions/checkout@v3
-
-    - name: Setup SSH  # Настройка SSH для подключения к AWS
-      uses: webfactory/ssh-agent@v0.5.3
-      with:
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
-name: Deploy Flask App to AWS
-
-on:
-  push:
-    branches:
-      - master  # Ветка, при пуше в которую срабатывает деплой
+      - master  # Запуск при пуше в ветку master
 
 jobs:
   deploy:
