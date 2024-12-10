@@ -22,6 +22,12 @@ jobs:
       run: |
         ssh -o StrictHostKeyChecking=no ${{ secrets.AWS_USER }}@${{ secrets.AWS_HOST }} << 'EOF'
         set -e  # Останавливаем скрипт при ошибках
+        if [ -d "${{ secrets.APP_DIR }}" ]; then
+          echo "==== Directory exists. Cloning not required ===="
+        else
+          echo "==== Directory not found. Cloning the repository ===="
+          git clone ${{ secrets.REPO_URL }} ${{ secrets.APP_DIR }}
+        fi
         echo "==== Pulling latest changes from GitHub ===="
         cd ${{ secrets.APP_DIR }}  # Переход в директорию приложения
         git fetch origin
